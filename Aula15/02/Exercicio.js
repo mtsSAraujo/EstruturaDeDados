@@ -3,9 +3,12 @@ function inserirElemento(vetor){
     do{
         if(checaInteiro(qtdeNumeros) && qtdeNumeros>0){
             for(let i=0;i<qtdeNumeros; i++){
-                num = Number(prompt("Digite algum valor inteiro qualquer: "))
+                num = Number(prompt("Digite algum valor inteiro qualquer: \nPara parar o codigo, digite 1.1"))
                 if(checaInteiro(num)){
                     vetor.push(num)
+                }
+                else if(num == 1.1){
+                    break
                 }
                 else{
                     while(checaInteiro(num) == false){
@@ -58,13 +61,16 @@ function removerElementoPorValor(vetor){
     }
     else{
         qtdRemovidos = Number(prompt(("Foram encontrados " + vetorRemover.length + " números com o valor fornecido, deseja remover quantos deles?")))
-        while(!checaInteiro(qtdRemovidos) || !qtdRemovidos>0 || !qtdRemovidos<=vetorRemover.length){
+        while(!checaInteiro(qtdRemovidos) || qtdRemovidos>=0 || !qtdRemovidos<=vetorRemover.length){
             if(checaInteiro(qtdRemovidos) && qtdRemovidos>0 && qtdRemovidos<=vetorRemover.length){
                 for(let i=0; i<qtdRemovidos; i++){
                     vetor.splice(vetor.indexOf(vetorRemover[i]), 1)
                 }
                 console.log("Valores removidos com sucesso!")
                 break;
+            }
+            else if(qtdRemovidos == 0){
+                break
             }
             else{
                 qtdRemovidos = Number(prompt(("Opção digitada inválida!\nInsira um valor válido!")))
