@@ -106,10 +106,8 @@ function salvaTempo(vetorAleatorio, vetorInvertido, vetorOrdenado, vetorTempos){
 }
 
 function mostraTempos(vetorTempos){
-    for(let i =0; i<vetorTempos.length; i = i+3){
+    for(let i =0; i<vetorTempos.length; i++){
         console.log(vetorTempos[i])
-        console.log(vetorTempos[i+1])
-        console.log(vetorTempos[i+2])
     }
 }
 
