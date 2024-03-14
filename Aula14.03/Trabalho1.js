@@ -63,6 +63,40 @@ function insertion(vet) {
     }
 }
 
+function quickSortCall(vetor){
+    quickSort(vetor, 0, vetor.length - 1)
+}
+
+function quickSort(array, inicio, fim){
+    if(inicio<fim){
+        meio = Math.floor((inicio+fim)/2)
+        pivo = array[meio]
+        index = particao(array, inicio, fim, pivo)
+        quickSort(array, inicio, index-1)
+        quickSort(array, index, fim)
+    }
+}
+
+function particao(array, esquerda, direita, pivo){ //Chamada de uso para realização do quickSort
+    let auxiliar;
+    while(esquerda<=direita){
+        while(array[esquerda] < pivo){
+            esquerda ++
+        }
+        while(array[direita] > pivo){
+            direita --
+        }
+        if(esquerda <= direita){
+            auxiliar = array[esquerda]
+            array[esquerda] = array[direita]
+            array[direita] = auxiliar
+            esquerda ++
+            direita --
+        }
+    }
+    return esquerda;
+}
+
 function tempoFunc(func, vetor, vetorTempo, metodo, tipoVet) {
     let antes, tempo;
     antes = performance.now();
@@ -83,6 +117,10 @@ function tempo(vetorAleatorio, vetorInvertido, vetorOrdenado, vetorTempo) {
     tempoFunc(insertion, vetorAleatorio, vetorTempo, "insertion", "aleatorio");
     tempoFunc(insertion, vetorInvertido, vetorTempo, "insertion", "invertido");
     tempoFunc(insertion, vetorOrdenado, vetorTempo, "insertion", "ordenado");
+
+    tempoFunc(quickSortCall, vetorAleatorio, vetorTempo, "quick", "aleatorio");
+    tempoFunc(quickSortCall, vetorInvertido, vetorTempo, "quick", "invertido");
+    tempoFunc(quickSortCall, vetorOrdenado, vetorTempo, "quick", "ordenado");
 }
 
 function mostrarTemp(vetorTempo) {
