@@ -1,5 +1,5 @@
 function quickSortCall(vetor){
-    quickSort(array, 0, array.lenght()-1)
+    quickSort(vetor, 0, vetor.length - 1)
 }
 
 function quickSort(array, inicio, fim){
@@ -7,18 +7,18 @@ function quickSort(array, inicio, fim){
         meio = Math.floor((inicio+fim)/2)
         pivo = array[meio]
         index = particao(array, inicio, fim, pivo)
-        quickSort(array, inicio, index)
-        quickSort(array, index+1, fim)
+        quickSort(array, inicio, index-1)
+        quickSort(array, index, fim)
     }
 }
 
 function particao(array, esquerda, direita, pivo){
     let auxiliar;
-    while(esquerda<direita){
-        while(array[esquerda] <= pivo){
+    while(esquerda<=direita){
+        while(array[esquerda] < pivo){
             esquerda ++
         }
-        while(array[direita] >= pivo){
+        while(array[direita] > pivo){
             direita --
         }
         if(esquerda <= direita){
@@ -34,3 +34,4 @@ function particao(array, esquerda, direita, pivo){
 
 let vetor = [25, 57, 48, 37, 12, 92, 86, 33]
 quickSortCall(vetor)
+console.log(vetor)
