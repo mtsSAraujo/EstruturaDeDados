@@ -32,6 +32,6 @@ function particao(array, esquerda, direita, pivo){
     return esquerda;
 }
 
-let vetor = [25, 57, 48, 37, 12, 92, 86, 33]
+let vetor = [8, 9, 10 , 7, 5, 6, 2, 1, 3, 4, 5]
 quickSortCall(vetor)
 console.log(vetor)
