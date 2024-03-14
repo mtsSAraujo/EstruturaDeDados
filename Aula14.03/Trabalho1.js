@@ -50,16 +50,15 @@ function selection(vet) {
 }
 
 function insertion(vet) {
-    let vetor = [...vet];
-    let tam = vetor.length;
-    for (let i = 1; i < tam; i++) {
-        let j = i - 1;
-        let veto = vetor[i];
-        while (vetor[j] > vetor[i] && j >= 0) {
-            vetor[j + 1] = vetor[j];
-            j--;
+    let vetor = [... vet]
+    let tam = vetor.length
+    for(let i=1; i<tam; i++){
+        let atual = vetor[i]
+        let j
+        for(j=i-1; j>=0 && vetor[j] > atual;j--){
+            vetor[j+1] = vetor[j]
         }
-        vetor[j + 1] = veto;
+        vetor[j+1] = atual
     }
 }
 
