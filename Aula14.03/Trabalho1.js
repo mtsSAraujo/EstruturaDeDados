@@ -169,7 +169,7 @@ function main() {
                             break;
 
                         default:
-                            console.log("escreve um numero válido filho da puta")
+                            console.log("escreve um numero válido")
                             break;
 
                     }
