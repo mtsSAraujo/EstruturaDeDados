@@ -15,18 +15,17 @@ function gerarVetorOrdenado(vetorOrdenado, tamanho) {
 }
 
 function bubblesort(vetor) {
-    let flag, trad;
-    let x = vetor.length;
-    while (x > 0) {
-        for (let i = 0; i < x; i++) {
-            if (vetor[i] > vetor[i + 1]) {
-                flag = vetor[i];
-                trad = vetor[i + 1];
-                vetor[i] = trad;
-                vetor[i + 1] = flag;
+    let tamanho = vetor.length
+    let comparacao = 0;
+    while(tamanho>=0){
+        for(let i=0; i<tamanho; i++){
+            if(vetor[i] > vetor[i+1]){
+                comparacao = vetor[i]
+                vetor[i]=vetor[i+1]
+                vetor[i+1] = comparacao
             }
         }
-        x--;
+        tamanho--
     }
 }
 
