@@ -14,8 +14,7 @@ function gerarVetorOrdenado(vetorOrdenado, tamanho) {
     }
 }
 
-function bubblesort(vet) {
-    let vetor = [...vet];
+function bubblesort(vetor) {
     let flag, trad;
     let x = vetor.length;
     while (x > 0) {
@@ -31,12 +30,12 @@ function bubblesort(vet) {
     }
 }
 
-function selection(vet) {
-    let vetor = [...vet];
+function selection(vetor) {
     let menor, aux, index;
     let tam = vetor.length;
     for (let i = 0; i < tam; i++) {
         menor = vetor[i];
+        index = i;
         for (let j = 1; j < tam; j++) {
             if (vetor[j] < menor) {
                 menor = vetor[j];
@@ -49,8 +48,7 @@ function selection(vet) {
     }
 }
 
-function insertion(vet) {
-    let vetor = [... vet]
+function insertion(vetor) {
     let tam = vetor.length
     for(let i=1; i<tam; i++){
         let atual = vetor[i]
@@ -96,7 +94,8 @@ function particao(array, esquerda, direita, pivo){ //Chamada de uso para realiza
     return esquerda;
 }
 
-function tempoFunc(func, vetor, vetorTempo, metodo, tipoVet) {
+function tempoFunc(func, vet, vetorTempo, metodo, tipoVet) {
+    let vetor = [...vet]
     let antes, tempo;
     antes = performance.now();
     func(vetor);
