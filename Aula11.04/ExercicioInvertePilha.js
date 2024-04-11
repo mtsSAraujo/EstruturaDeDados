@@ -11,7 +11,10 @@ let contador = pilha.length
 let pilhaInvertida = []
 invertePalavras(pilha, contador, pilhaInvertida)
 console.log(pilhaInvertida)
-let vetorPalavras = [...pilhaInvertida[0], ...pilhaInvertida[1], ...pilhaInvertida[2]]
+let vetorPalavras = []
+for(let j =0; j<pilhaInvertida.length; j++){
+    vetorPalavras += [...pilhaInvertida[j]]
+}
 console.log(vetorPalavras)
 
 /* for(let j = pilha.length-1; elemento != " "; j--){
