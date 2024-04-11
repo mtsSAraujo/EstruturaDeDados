@@ -1,32 +1,3 @@
-let palavra = "Complicado demais cara"
-let pilha = [] 
-let elemento
-for(let i =0; i<palavra.length; i++){
-    elemento = palavra[i]
-    pilha.push(elemento)
-}
-
-let palavraInvertida = []
-let contador = pilha.length
-let pilhaInvertida = []
-invertePalavras(pilha, contador, pilhaInvertida)
-console.log(pilhaInvertida)
-let vetorPalavras = []
-for(let j =0; j<pilhaInvertida.length; j++){
-    vetorPalavras += [...pilhaInvertida[j]]
-}
-console.log(vetorPalavras)
-
-/* for(let j = pilha.length-1; elemento != " "; j--){
-    elemento = pilha.pop()
-    palavraInvertida.push(elemento)
-    console.log(palavraInvertida)
-    contador --
-    if(contador>0 && elemento == " "){
-
-    }
-} */
-
 function invertePalavras(pilha, contador, pilhaInvertida){
     let elemento
     let palavraInvertida = []
@@ -47,4 +18,38 @@ function invertePalavras(pilha, contador, pilhaInvertida){
     }
 }
 
+function inserirVetor(pilhaInvertida, vetorPalavras){
+    let valorPopado;
+    for(let i=0; i<pilhaInvertida.length; i++){
+        valorPopado = pilhaInvertida.pop()
+        if(i == pilhaInvertida.length){
+            vetorPalavras.push(valorPopado)
+            break
+        }
+        else{
+            inserirVetor(pilhaInvertida, vetorPalavras)
+            vetorPalavras.push(valorPopado)
+        }
+    }
+    return vetorPalavras
+}
 
+let palavra = "será que funciona mesmo?"
+if(palavra == ""){
+    console.log("Não há nenhuma frase digitada")
+}
+else{
+    let pilha = [] 
+    let elemento
+    for(let i =0; i<palavra.length; i++){
+        elemento = palavra[i]
+        pilha.push(elemento)
+    }
+    let contador = pilha.length
+    let pilhaInvertida = []
+    console.log("Entrada: " + palavra)
+    invertePalavras(pilha, contador, pilhaInvertida)
+    let vetorPalavras = []
+    vetorPalavras = inserirVetor(pilhaInvertida, vetorPalavras)
+    console.log("Saida: " + vetorPalavras.toString().replace(/,/g, ""))
+}
