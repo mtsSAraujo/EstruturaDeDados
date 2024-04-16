@@ -24,7 +24,8 @@
 function invertePalavra(palavra){
     let i = 0;
     let pilha = []
-    let letra, fraseInvertida;
+    let letra
+    let fraseInvertida = ""
     while(i < palavra.length){
         while(palavra[i] != " " && i<palavra.length){
             pilha.push(palavra[i])
@@ -34,7 +35,10 @@ function invertePalavra(palavra){
             letra = pilha.pop()
             fraseInvertida += letra
         }
-        fraseInvertida += " "
+        i++
+        if(i < palavra.length){
+            fraseInvertida += " "
+        }
     }
     return fraseInvertida
 }
