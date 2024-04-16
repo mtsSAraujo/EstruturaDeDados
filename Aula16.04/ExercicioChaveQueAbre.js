@@ -86,4 +86,3 @@ atribuiOsTestes(filaTeste, testeTrue3)
 atribuiOsTestes(filaTeste, testeFalse)
 atribuiOsTestes(filaTeste, testeFalse2)
 atribuiOsTestes(filaTeste, testeFalse3)
-
