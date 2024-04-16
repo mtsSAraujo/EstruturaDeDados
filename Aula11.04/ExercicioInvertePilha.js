@@ -34,7 +34,7 @@ function inserirVetor(pilhaInvertida, vetorPalavras){
     return vetorPalavras
 }
 
-let palavra = "será que funciona mesmo?"
+let palavra = "Ta feito jaqueline ;)"
 if(palavra == ""){
     console.log("Não há nenhuma frase digitada")
 }
