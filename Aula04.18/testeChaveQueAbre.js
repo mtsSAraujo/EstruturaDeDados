@@ -10,7 +10,7 @@ let testeFalse2 = "[][()()()}"
 testeFalse2 = testeFalse2.split('')
 let testeFalse3 = "[[[]"
 testeFalse3 = testeFalse3.split('')
-let testeFalse4 = "[]["
+let testeFalse4 = ")("
 testeFalse4 = testeFalse4.split('')
 console.log("Resultado esperado: True, True, True, False, False, False, False")
 console.log(resolveProblema(testeTrue))
@@ -50,7 +50,7 @@ function resolveProblema(testeTrue){
                 return false
             }
         }
-        if(contadorParenteses < 0 || contadorChaves < 0 || contadorParenteses < 0){
+        if(contadorParenteses < 0 || contadorChaves < 0 || contadorColchetes < 0){
             return false
         }
         else if(contadorParenteses == 0 && contadorColchetes == 0 && contadorChaves == 0 && testeTrue.length == 0){
