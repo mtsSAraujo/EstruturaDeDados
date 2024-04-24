@@ -76,6 +76,49 @@ function LinkedList(){
         length ++
     }
 
+    this.findElement = function(element){
+        let atual = head;
+        let posicao = 0;
+        while(atual.element != element){
+            atual = atual.next
+            posicao++
+        }
+        if(atual.element === element){
+            return posicao
+        }
+        else{
+            return -1
+        }
+    }
+
+    this.removeByIndex = function(index){
+        let removido
+        let anterior
+        let proximo
+        let atual = head
+        if(index < length){
+            for(let i =0; i< index-1; i++){
+                atual = atual.next
+            }
+            if(index == length - 1){
+                anterior = atual
+                removido = atual.next
+                anterior.next = null
+                removido.next = null
+            }
+            else{
+                anterior = atual
+                removido = atual.next
+                proximo = removido.next
+                removido.next = null
+                anterior.next = proximo
+            }
+        }
+        else{
+            return console.log("Index out of bounds")
+        }
+    }
+
 }
 
 
@@ -88,8 +131,9 @@ console.log(variavel.size())
 console.log(variavel.getHead().element)
 console.log(variavel.getAllElements(variavel))
 variavel.shift()
-variavel.shift()
-variavel.shift()
 variavel.unshift(9)
 variavel.unshift(3)
+console.log(variavel.toString())
+variavel.removeByIndex(3)
+console.log("Posicao: " + variavel.findElement(3))
 console.log(variavel.toString())
