@@ -92,9 +92,9 @@ function LinkedList(){
     }
 
     this.removeByIndex = function(index){
-        let removido
-        let anterior
-        let proximo
+        let removido;
+        let anterior;
+        let proximo;
         let atual = head
         if(index < length){
             for(let i =0; i< index-1; i++){
