@@ -76,19 +76,19 @@ function LinkedList(){
         length ++
     }
 
-    this.findElement = function(element){
+    this.findElement = function(elemento){
         let atual = head;
         let posicao = 0;
-        while(atual.element != element){
-            atual = atual.next
-            posicao++
+        while(atual){
+            if(atual.element === elemento){
+                return posicao
+            }
+            else{
+                atual = atual.next
+                posicao++
+            }
         }
-        if(atual.element === element){
-            return posicao
-        }
-        else{
-            return -1
-        }
+        return -1
     }
 
     this.removeByIndex = function(index){
@@ -134,6 +134,7 @@ variavel.shift()
 variavel.unshift(9)
 variavel.unshift(3)
 console.log(variavel.toString())
-variavel.removeByIndex(3)
-console.log("Posicao: " + variavel.findElement(3))
+variavel.removeByIndex(4)
+console.log(variavel.toString())
+console.log("Posicao: " + variavel.findElement(5))
 console.log(variavel.toString())

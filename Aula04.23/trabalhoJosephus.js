@@ -1,3 +1,4 @@
+// Lista encadeada circular para resolver o exercicio
 function LinkedList(){
 
     let Node = function(element){
@@ -26,10 +27,17 @@ function LinkedList(){
 
     this.createList = function(variavel, n){
         let i=1;
+        let ultimo = new Node();
         while(i<=n){
             variavel.append(i)
             i++
         }
+        let busca = head
+        while(busca.next){
+            busca = busca.next
+            ultimo = busca
+        }
+        ultimo.next = head
         return variavel
     }
 
@@ -44,22 +52,21 @@ function LinkedList(){
     this.getAllElements = function(variavel){
         let atual = variavel.getHead()
         listaDeElementos = []
-        while(atual.next){
+        do{
             listaDeElementos.push(atual.element)
-            listaDeElementos.push(" --> ")
+            listaDeElementos.push(atual.next != head ? " --> " : "")
             atual = atual.next
-        }
-        listaDeElementos.push(atual.element)
+        }while(atual != head)
         listaDeElementos = listaDeElementos.join("")
         return listaDeElementos
     }
 
     this.toString = function (){
         let atual = head, string = ""
-        while(atual){
-            string += atual.element + (atual.next ? " --> " : "")
+        do{
+            string += atual.element + (" ")
             atual = atual.next
-        }
+        }while(atual != head)
         return string
     }
 
@@ -109,18 +116,23 @@ function LinkedList(){
             for(let i =0; i< index-1; i++){
                 atual = atual.next
             }
-            if(index == length - 1){
-                anterior = atual
-                removido = atual.next
-                anterior.next = null
-                removido.next = null
+            if(atual == head){
+                this.shift()
             }
             else{
-                anterior = atual
-                removido = atual.next
-                proximo = removido.next
-                removido.next = null
-                anterior.next = proximo
+                if(index == length - 1){
+                    anterior = atual
+                    removido = atual.next
+                    anterior.next = null
+                    removido.next = null
+                }
+                else{
+                    anterior = atual
+                    removido = atual.next
+                    proximo = removido.next
+                    removido.next = null
+                    anterior.next = proximo
+                }
             }
         }
         else{
@@ -139,7 +151,27 @@ function LinkedList(){
         return console.log("Index out of bounds")
     }
 
-
+    this.removeMValues = function(variavel, m){
+        let contagem = 0
+        let auxM = m
+        while(length>1){
+            if(contagem + m <= length){
+                contagem += m
+                console.log("Contagem: " + contagem)
+                variavel.removeByIndex(contagem-1)
+                console.log(variavel.getAllElements(variavel))
+            }
+            else{
+                while(contagem < length - 1){
+                    contagem++
+                    auxM --
+                }
+                contagem = 0 + auxM
+                variavel.removeByIndex(contagem - 1)
+            }
+            length--
+        }
+    }
 
 }
 
@@ -147,4 +179,7 @@ function LinkedList(){
 let variavel = new LinkedList();
 
 variavel = variavel.createList(variavel, 5)
+console.log("Lista: " + variavel.getAllElements(variavel))
+variavel.removeMValues(variavel, 2)
+//console.log(variavel.toString())
 console.log(variavel.getHead())
