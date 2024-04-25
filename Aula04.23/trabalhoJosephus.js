@@ -108,32 +108,26 @@ function LinkedList(){
     }
 
     this.removeByIndex = function(index){
-        let removido;
-        let anterior;
-        let proximo;
         let atual = head
         if(index < length){
-            for(let i =0; i< index-1; i++){
+            if(index == 0){
+                for(let j=0; j<length-1; j++){
+                    atual = atual.next
+                }
+                console.log("Atual para index = 0: " + atual.element)
+                atual.next = atual.next.next
+                return
+            }
+            for(let i=0; i<index -1; i++){
                 atual = atual.next
             }
-            if(atual == head){
-                this.shift()
+            atual.next = atual
+            console.log("atual elemento: " + atual.next)
+            if(atual.next == atual){
+                head = atual
+                console.log("Entrei aqui!")
             }
-            else{
-                if(index == length - 1){
-                    anterior = atual
-                    removido = atual.next
-                    anterior.next = null
-                    removido.next = null
-                }
-                else{
-                    anterior = atual
-                    removido = atual.next
-                    proximo = removido.next
-                    removido.next = null
-                    anterior.next = proximo
-                }
-            }
+            console.log(atual)
         }
         else{
             return console.log("Index out of bounds")
@@ -151,26 +145,31 @@ function LinkedList(){
         return console.log("Index out of bounds")
     }
 
-    this.removeMValues = function(variavel, m){
-        let contagem = 0
-        let auxM = m
-        while(length>1){
-            if(contagem + m <= length){
+    this.removeMValues = function(m){
+        let atual = head
+        let contagem =0;
+        let auxM = m;
+        while(length > 1){
+            if(contagem+m <= length){
                 contagem += m
-                console.log("Contagem: " + contagem)
-                variavel.removeByIndex(contagem-1)
+                this.removeByIndex(contagem-1)
                 console.log(variavel.getAllElements(variavel))
+                contagem--
+                console.log(contagem)
             }
             else{
-                while(contagem < length - 1){
+                while(contagem<length){
                     contagem++
-                    auxM --
+                    auxM--
                 }
-                contagem = 0 + auxM
-                variavel.removeByIndex(contagem - 1)
+                contagem = auxM
+                console.log(contagem +" " + auxM)
+                this.removeByIndex(contagem-1)
+                console.log(variavel.getAllElements(variavel))
             }
             length--
         }
+        return
     }
 
 }
@@ -180,6 +179,8 @@ let variavel = new LinkedList();
 
 variavel = variavel.createList(variavel, 5)
 console.log("Lista: " + variavel.getAllElements(variavel))
-variavel.removeMValues(variavel, 2)
+variavel.removeByIndex(5)
+console.log("Lista: " + variavel.getAllElements(variavel))
+variavel.removeMValues(2)
 //console.log(variavel.toString())
-console.log(variavel.getHead())
+//console.log(variavel.getHead())
