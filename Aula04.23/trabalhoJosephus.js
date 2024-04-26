@@ -33,6 +33,11 @@ function LinkedList(){
             i++
         }
         let busca = head
+        if(n == 1){
+            busca.next = busca
+            console.log(busca)
+            return variavel
+        }
         while(busca.next){
             busca = busca.next
             ultimo = busca
@@ -49,8 +54,8 @@ function LinkedList(){
         return head
     }
 
-    this.getAllElements = function(variavel){
-        let atual = variavel.getHead()
+    this.getAllElements = function(){
+        let atual = head
         listaDeElementos = []
         do{
             listaDeElementos.push(atual.element)
@@ -92,95 +97,45 @@ function LinkedList(){
         length ++
     }
 
-    this.findElement = function(element){
-        let atual = head;
-        let posicao = 0;
-        while(atual.element != element){
-            atual = atual.next
-            posicao++
-        }
-        if(atual.element === element){
-            return posicao
-        }
-        else{
-            return -1
-        }
-    }
-
-    this.removeByIndex = function(index){
-        let atual = head
-        if(index < length){
-            if(index == 0){
-                for(let j=0; j<length-1; j++){
-                    atual = atual.next
-                }
-                console.log("Atual para index = 0: " + atual.element)
-                atual.next = atual.next.next
-                return
-            }
-            for(let i=0; i<index -1; i++){
-                atual = atual.next
-            }
-            atual.next = atual
-            console.log("atual elemento: " + atual.next)
-            if(atual.next == atual){
-                head = atual
-                console.log("Entrei aqui!")
-            }
-            console.log(atual)
-        }
-        else{
-            return console.log("Index out of bounds")
-        }
-    }
-
-    this.findByIndex = function(index){
-        let atual = head;
-        if(index < length){
-            for(let i =0; i< index -1; i++){
-                atual = atual.next
-            }
-            return atual
-        }
-        return console.log("Index out of bounds")
-    }
-
     this.removeMValues = function(m){
-        let atual = head
-        let contagem =0;
-        let auxM = m;
-        while(length > 1){
-            if(contagem+m <= length){
-                contagem += m
-                this.removeByIndex(contagem-1)
-                console.log(variavel.getAllElements(variavel))
-                contagem--
-                console.log(contagem)
+        let andar = m -1
+        let current = head
+        while(length>1){
+            while(andar > 1){
+                current = current.next
+                andar --
             }
-            else{
-                while(contagem<length){
-                    contagem++
-                    auxM--
-                }
-                contagem = auxM
-                console.log(contagem +" " + auxM)
-                this.removeByIndex(contagem-1)
-                console.log(variavel.getAllElements(variavel))
+            if(current.next == head){
+                head = current.next.next
             }
-            length--
+            current.next = current.next.next
+            andar = m
+            length --
         }
-        return
+        if(length == 1){
+            return 
+        }
+        return console.log("Lista encadeada vazia!")
+    }
+
+    this.empty = function(){
+        if(head == null){
+            return true
+        }
+        return false
     }
 
 }
 
+function main(){
+    let variavel = new LinkedList();
+    let n = 10, m = 5;
+    variavel = variavel.createList(variavel, n)
+    console.log(variavel.getHead())
+    console.log("Lista: " + variavel.getAllElements())
+    console.log("Lista: " + variavel.getAllElements())
+    variavel.removeMValues(m)
+    console.log(variavel.getHead().next)
+}
 
-let variavel = new LinkedList();
-
-variavel = variavel.createList(variavel, 5)
-console.log("Lista: " + variavel.getAllElements(variavel))
-variavel.removeByIndex(5)
-console.log("Lista: " + variavel.getAllElements(variavel))
-variavel.removeMValues(2)
-//console.log(variavel.toString())
-//console.log(variavel.getHead())
+main()
