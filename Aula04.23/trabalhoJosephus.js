@@ -35,7 +35,6 @@ function LinkedList(){
         let busca = head
         if(n == 1){
             busca.next = busca
-            console.log(busca)
             return variavel
         }
         while(busca.next){
@@ -125,17 +124,36 @@ function LinkedList(){
         return false
     }
 
+    this.appendCircular = function(element){
+        let node = new Node(element)
+        if(head == null){
+            head = node
+        }
+        else{
+            current = head
+            do{
+                current = current.next
+            }while(current.next != head)
+            current.next = node
+            node.next = head
+        }
+        length++
+    }
+
 }
 
 function main(){
     let variavel = new LinkedList();
-    let n = 10, m = 5;
+    let n = 3, m = 2;
     variavel = variavel.createList(variavel, n)
     console.log(variavel.getHead())
     console.log("Lista: " + variavel.getAllElements())
     console.log("Lista: " + variavel.getAllElements())
     variavel.removeMValues(m)
-    console.log(variavel.getHead().next)
+    console.log(variavel.getAllElements())
+    variavel.appendCircular(2)
+    variavel.appendCircular(3)
+    console.log(variavel.getHead())
 }
 
 main()
