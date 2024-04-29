@@ -9,27 +9,10 @@ function LinkedList(){
     let length = 0;
     let head = null;
 
-    this.append = function(element){
-
-        let node = new Node(element), current;
-        if(head == null){
-            head = node;
-        }
-        else{
-            current = head;
-            while(current.next){
-                current = current.next;
-            }
-            current.next = node;
-        }
-        length ++
-    }
-
     this.createList = function(variavel, n){
         let i=1;
-        let ultimo = new Node();
         while(i<=n){
-            variavel.append(i)
+            variavel.appendCircular(i)
             i++
         }
         let busca = head
@@ -37,11 +20,6 @@ function LinkedList(){
             busca.next = busca
             return variavel
         }
-        while(busca.next){
-            busca = busca.next
-            ultimo = busca
-        }
-        ultimo.next = head
         return variavel
     }
 
@@ -128,12 +106,13 @@ function LinkedList(){
         let node = new Node(element)
         if(head == null){
             head = node
+            head.next = head
         }
         else{
             current = head
-            do{
+            while(current.next != head){
                 current = current.next
-            }while(current.next != head)
+            }
             current.next = node
             node.next = head
         }
@@ -144,8 +123,9 @@ function LinkedList(){
 
 function main(){
     let variavel = new LinkedList();
-    let n = 3, m = 2;
+    let n = 14, m = 7;
     variavel = variavel.createList(variavel, n)
+    console.log("Lista: " + variavel.getAllElements())
     console.log(variavel.getHead())
     console.log("Lista: " + variavel.getAllElements())
     console.log("Lista: " + variavel.getAllElements())
