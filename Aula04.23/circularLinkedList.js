@@ -77,10 +77,10 @@ function CircularLinkedList(){
 }
 
 let variavel = new CircularLinkedList();
-variavel.createList(variavel, 3)
+variavel.createList(variavel, 41)
 console.log(variavel.getAllElements())
 console.log(variavel.getSize())
-variavel.josephusResolution(2)
+variavel.josephusResolution(7)
 console.log(variavel.getAllElements())
 console.log(variavel.getSize())
 console.log(variavel.getHead())
