@@ -32,8 +32,8 @@ function LinkedList(){
         return head
     }
 
-    this.getAllElements = function(variavel){
-        let atual = variavel.getHead()
+    this.getAllElements = function(){
+        let atual = head
         listaDeElementos = []
         while(atual.next){
             listaDeElementos.push(atual.element)
@@ -129,12 +129,13 @@ variavel.append(5)
 variavel.append(6)
 console.log(variavel.size())
 console.log(variavel.getHead().element)
-console.log(variavel.getAllElements(variavel))
+console.log(variavel.getAllElements())
 variavel.shift()
 variavel.unshift(9)
 variavel.unshift(3)
 console.log(variavel.toString())
 variavel.removeByIndex(4)
+variavel.removeByIndex(3)
 console.log(variavel.toString())
 console.log("Posicao: " + variavel.findElement(5))
 console.log(variavel.toString())

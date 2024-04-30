@@ -34,6 +34,9 @@ function LinkedList(){
     this.getAllElements = function(){
         let atual = head
         listaDeElementos = []
+        if(length == 0){
+            return "Lista Vazia!"
+        }
         do{
             listaDeElementos.push(atual.element)
             listaDeElementos.push(atual.next != head ? " --> " : "")
@@ -58,6 +61,11 @@ function LinkedList(){
         }
         let atual = head
         let proximo = atual.next
+        if(proximo == head){
+            head = null
+            length = 0
+            return
+        }
         head = proximo
         length --
     }
@@ -77,7 +85,7 @@ function LinkedList(){
     this.removeMValues = function(m){
         let andar = m -1
         let current = head
-        while(length>1){
+        while(length>=0){
             while(andar > 1){
                 current = current.next
                 andar --
@@ -89,7 +97,7 @@ function LinkedList(){
             andar = m
             length --
         }
-        if(length == 1){
+        if(length == 0){
             return 
         }
         return console.log("Lista encadeada vazia!")
@@ -123,13 +131,13 @@ function LinkedList(){
 
 function main(){
     let variavel = new LinkedList();
-    let n = 14, m = 7;
+    let n = 41, m = 7;
     variavel = variavel.createList(variavel, n)
     console.log("Lista: " + variavel.getAllElements())
     console.log(variavel.getHead())
-    console.log("Lista: " + variavel.getAllElements())
-    console.log("Lista: " + variavel.getAllElements())
     variavel.removeMValues(m)
+    console.log(variavel.getAllElements())
+    variavel.shift()
     console.log(variavel.getAllElements())
     variavel.appendCircular(2)
     variavel.appendCircular(3)
