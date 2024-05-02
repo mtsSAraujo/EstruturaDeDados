@@ -96,11 +96,14 @@ function LinkedList(){
         let anterior;
         let proximo;
         let atual = head
-        if(index < length){
+        if(index > -1 && index < length){
             for(let i =0; i< index-1; i++){
                 atual = atual.next
             }
-            if(index == length - 1){
+            if(index == 0){
+                head = atual.next
+            }
+            else if(index == length - 1){
                 anterior = atual
                 removido = atual.next
                 anterior.next = null
@@ -113,6 +116,7 @@ function LinkedList(){
                 removido.next = null
                 anterior.next = proximo
             }
+            length --
         }
         else{
             return console.log("Index out of bounds")
@@ -134,7 +138,7 @@ variavel.shift()
 variavel.unshift(9)
 variavel.unshift(3)
 console.log(variavel.toString())
-variavel.removeByIndex(4)
+variavel.removeByIndex(0)
 variavel.removeByIndex(3)
 console.log(variavel.toString())
 console.log("Posicao: " + variavel.findElement(5))

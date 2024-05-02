@@ -137,11 +137,11 @@ function main(){
     console.log(variavel.getHead())
     variavel.removeMValues(m)
     console.log(variavel.getAllElements())
-    variavel.shift()
+/*     variavel.shift()
     console.log(variavel.getAllElements())
     variavel.appendCircular(2)
     variavel.appendCircular(3)
-    console.log(variavel.getHead())
+    console.log(variavel.getHead()) */
 }
 
 main()
