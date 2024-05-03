@@ -33,7 +33,7 @@ function josephusResolution(vetor, m){
 }
 
 let vetor = []
-let n = 50, m = 36;
+let n = 2, m = 3;
 createVetor(vetor, n)
 console.log(vetor)
 josephusResolution(vetor, m)
