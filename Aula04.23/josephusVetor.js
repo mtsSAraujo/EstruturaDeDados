@@ -33,8 +33,7 @@ function josephusResolution(vetor, m){
 }
 
 let vetor = []
-let n = 2, m = 3;
+let n = 24, m = 7;
 createVetor(vetor, n)
-console.log(vetor)
 josephusResolution(vetor, m)
-console.log(vetor)
+console.log("Número que sobrou: " + vetor)

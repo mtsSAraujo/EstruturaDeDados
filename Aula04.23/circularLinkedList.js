@@ -58,7 +58,6 @@ function CircularLinkedList(){
                     current = current.next
                 }
             }
-            console.log(current)
             if(current.next == head){
                 current.next.next = current.next.next.next
             }
@@ -77,10 +76,9 @@ function CircularLinkedList(){
 }
 
 let variavel = new CircularLinkedList();
-variavel.createList(variavel, 41)
+let n = 41, m =7;
+variavel.createList(variavel, n)
 console.log(variavel.getAllElements())
-console.log(variavel.getSize())
-variavel.josephusResolution(7)
+variavel.josephusResolution(m)
+console.log("Ultimo elemento que sobrou: ")
 console.log(variavel.getAllElements())
-console.log(variavel.getSize())
-console.log(variavel.getHead())
