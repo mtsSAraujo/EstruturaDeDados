@@ -15,8 +15,7 @@ function armazenaHash(hashPrincipal, letras){
             console.log("Letra ja mapeada!");
         }
         else{
-            hashPrincipal[codigoLetraFinal] = letras[i];
-            
+            hashPrincipal[codigoLetraFinal] = letras[i]; 
         }    
     }
 }
