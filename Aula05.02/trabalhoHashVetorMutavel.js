@@ -12,7 +12,7 @@ function inserirString(vetorHash, string){
         posicaoAdicionada = letraAtual % tamanhoVetor;
         while(vetorHash[posicaoAdicionada] != -1){
             posicaoAdicionada++
-            if(posicaoAdicionada == tamanhoVetor - 1 && vetorHash(posicaoAdicionada) != -1){
+            if(posicaoAdicionada == tamanhoVetor - 1 && vetorHash[posicaoAdicionada] != -1){
                 posicaoAdicionada = 0
             }
         }
