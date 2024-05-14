@@ -1,4 +1,4 @@
-let testeTrue = '[(])'
+let testeTrue = '(({[()]))}'
 testeTrue = testeTrue.split('')
 let testeTrue2 = "{()[][][[]]}"
 testeTrue2 = testeTrue2.split('')
