@@ -36,6 +36,7 @@ function armazenaLetra(hashPrincipal, letra){
             }
         }
         hashPrincipal[codigoLetraFinal] = letra
+        return true
     }
 }
 
