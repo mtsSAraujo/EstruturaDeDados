@@ -11,7 +11,7 @@ function armazenaHash(hashPrincipal, letras){
                 codigoLetraFinal = 0;
             }
         }
-        if(hashPrincipal.includes(letras[i])){
+        if(buscarLetra(hashPrincipal, letras[i])){
             console.log("Letra ja mapeada!");
         }
         else{
