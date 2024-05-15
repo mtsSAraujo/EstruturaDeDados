@@ -20,6 +20,25 @@ function armazenaHash(hashPrincipal, letras){
     }
 }
 
+function armazenaLetra(hashPrincipal, letra){
+    let tamanho = hashPrincipal.length
+    let codigoLetra = letra.charCodeAt(0)
+    let codigoLetraFinal = codigoLetra % tamanho;
+
+    if(buscarLetra(hashPrincipal, letra)){
+        return false
+    }
+    else{
+        while(hashPrincipal[codigoLetraFinal]){
+            codigoLetraFinal++
+            if(codigoLetraFinal >= tamanho){
+                codigoLetraFinal = 0;
+            }
+        }
+        hashPrincipal[codigoLetraFinal] = letra
+    }
+}
+
 function buscarLetra(hashPrincipal, letraBuscada){
     let tamanho = hashPrincipal.length;
     let codigoLetraProcurada = letraBuscada.charCodeAt(0);
@@ -30,15 +49,18 @@ function buscarLetra(hashPrincipal, letraBuscada){
         }
         posicaoInicial++;
     }
-    return "Não encontrado!"
+    return false
 }
 
 function main(){
     let hashPrincipal = new Array(29);
-    let todasLetras = "ABCDe";
+    let todasLetras = "ABD";
     armazenaHash(hashPrincipal, todasLetras);
     console.log(hashPrincipal);
-    console.log(buscarLetra(hashPrincipal, "e"));
+    console.log(buscarLetra(hashPrincipal, "A"));
+    console.log(armazenaLetra(hashPrincipal, "C"))
+    console.log(hashPrincipal)
+
 }
 
 main()
