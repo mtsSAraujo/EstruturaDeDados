@@ -18,5 +18,3 @@ listaCompras.insertFront("Açúcar");
 listaCompras.insertBack("Shampoo");
 
 console.log(listaCompras.print());
-
-
