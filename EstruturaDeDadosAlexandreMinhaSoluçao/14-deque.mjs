@@ -18,3 +18,9 @@ listaCompras.insertFront("Açúcar");
 listaCompras.insertBack("Shampoo");
 
 console.log(listaCompras.print());
+
+let primeiro = listaCompras.peekFront();
+let ultimo = listaCompras.peekBack();
+
+console.log({primeiro});
+console.log({ultimo});
